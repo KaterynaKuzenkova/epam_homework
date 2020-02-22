@@ -1,5 +1,9 @@
 package com.epam.lessons.lesson8;
 
+import com.epam.lessons.lesson8.comparator.BookAuthorComparator;
+import com.epam.lessons.lesson8.comparator.BookPriceComparator;
+import com.epam.lessons.lesson8.comparator.BookPublishHouseComparator;
+
 import java.util.Arrays;
 
 import static com.epam.lessons.lesson8.Validator.validateEmptyString;
@@ -13,8 +17,12 @@ public class Books {
         this.books = new Book[length];
     }
 
-    public Book[] getBooks() {
-        return books;
+    public Books(Book[] books) {
+        this.books = books;
+    }
+
+    public int getLength() {
+        return filled;
     }
 
     public void addBook(Book book) {
@@ -49,10 +57,6 @@ public class Books {
             }
         }
 
-        if (booksList.getBooks().length == 0) {
-            System.out.println("Books are not found");
-        }
-
         return booksList;
     }
 
@@ -65,10 +69,19 @@ public class Books {
                 booksList.addBook(book);
             }
         }
-        if (booksList.getBooks().length == 0) {
-            System.out.println("Books are not found");
-        }
+
         return booksList;
     }
 
+    public void sortByPrice() {
+        Arrays.sort(this.books, new BookPriceComparator());
+    }
+
+    public void sortByAuthor() {
+        Arrays.sort(this.books, new BookAuthorComparator());
+    }
+
+    public void sortByPublishHouse() {
+        Arrays.sort(this.books, new BookPublishHouseComparator());
+    }
 }

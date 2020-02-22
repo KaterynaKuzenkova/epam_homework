@@ -1,8 +1,5 @@
 package com.epam.lessons.lesson8;
 
-import com.epam.lessons.lesson8.Book;
-import com.epam.lessons.lesson8.Books;
-
 import java.util.Scanner;
 
 import static com.epam.lessons.lesson8.Validator.validateDoubleNumber;
@@ -10,7 +7,6 @@ import static com.epam.lessons.lesson8.Validator.validateDoubleNumber;
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        double increasePrice;
         Books books = new Books(5);
 
         Book[] booksList = new Book[]{
@@ -43,10 +39,14 @@ public class Main {
         try {
             System.out.println("Enter author's name");
             String author = scanner.nextLine();
-            author = scanner.nextLine();
             Books booksByAuthor = books.findBooksByAuthor(author);
-            System.out.println("Found books:");
-            booksByAuthor.viewBooks();
+
+            if (booksByAuthor.getLength() > 0) {
+                System.out.println("Found books:");
+                booksByAuthor.viewBooks();
+            } else {
+                System.out.println("Books not found");
+            }
         } catch (ValidationException e) {
             System.out.println("Find book by author failed due to " + e.getMessage());
         }
@@ -54,12 +54,25 @@ public class Main {
         try {
             System.out.println("Enter the year of the publishing ");
             Books booksByYear = books.findBookByYear(scanner.nextInt());
-            System.out.println("Found books:");
-            booksByYear.viewBooks();
+
+            if (booksByYear.getLength() > 0) {
+                System.out.println("Found books:");
+                booksByYear.viewBooks();
+            } else {
+                System.out.println("Books not found");
+            }
         } catch (ValidationException e) {
             System.out.println("Find book by year failed due to " + e.getMessage());
         }
-
+        System.out.println("------------------------------Sorting by Price----------------------------");
+        books.sortByPrice();
+        books.viewBooks();
+        System.out.println("------------------------------Sorting by Author---------------------------");
+        books.sortByAuthor();
+        books.viewBooks();
+        System.out.println("----------------------------Sorting by Publish House------------------------");
+        books.sortByPublishHouse();
+        books.viewBooks();
     }
 }
 
