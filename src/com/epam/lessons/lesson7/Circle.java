@@ -1,4 +1,4 @@
-package lesson7;
+package com.epam.lessons.lesson7;
 
 public class Circle extends Shape {
     private double radius;

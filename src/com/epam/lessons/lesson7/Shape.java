@@ -1,6 +1,6 @@
-package lesson7;
+package com.epam.lessons.lesson7;
 
-public class Shape {
+public abstract class Shape implements Drawable {
     protected String color;
 
     public Shape(String color) {
@@ -12,7 +12,6 @@ public class Shape {
         return "Class = " + this.getClass().getSimpleName() + " color = " + this.color;
     }
 
-    public double calcArea() {
-        return 0.0;
-    }
+    public abstract double calcArea();
+
 }

@@ -1,4 +1,4 @@
-package lesson7;
+package com.epam.lessons.lesson7;
 
 import java.util.Arrays;
 import java.util.List;

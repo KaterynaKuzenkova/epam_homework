@@ -1,4 +1,4 @@
-package lesson7;
+package com.epam.lessons.lesson7;
 
 public class Rectangle extends Shape {
     private double width;

@@ -1,4 +1,4 @@
-package lesson7;
+package com.epam.lessons.lesson7;
 
 public class Triangle extends Shape {
     private double a;
